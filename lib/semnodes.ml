@@ -7,6 +7,7 @@ type node =
 let rec arguments_to_string args =
   match args with
   | [] -> ""
+  | [arg] -> arg
   | arg :: args -> arg ^ " " ^ arguments_to_string args;;
 
 let node_to_string {executable;arguments} = executable ^ " " ^
@@ -15,6 +16,7 @@ let node_to_string {executable;arguments} = executable ^ " " ^
 let rec nodes_to_string nodes =
   match nodes with
   | [] -> ""
+  | [node] -> (node_to_string node)
   | node :: nodes -> (node_to_string node) ^ "\n" ^ nodes_to_string nodes
 
 type monitor =
@@ -31,5 +33,6 @@ let monitor_to_string {number;name;icon;nodes} =
 let rec monitors_to_string monitors =
   match monitors with
   | [] -> ""
+  | [monitor] -> monitor_to_string monitor
   | monitor :: monitors -> (monitor_to_string monitor) ^ "\n" ^ monitors_to_string monitors;;
 

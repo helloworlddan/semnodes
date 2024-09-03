@@ -17,8 +17,8 @@
 
 (package
  (name semnodes)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "Semantic node control for bspwm")
+ (description "Semantic node control for bspwm")
  (depends ocaml dune)
  (tags
   (topics "to describe" your project)))
