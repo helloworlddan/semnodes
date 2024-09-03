@@ -1,0 +1,4 @@
+(executable
+ (public_name semnodes)
+ (name main)
+ (libraries semnodes))
