@@ -43,28 +43,28 @@ let monitors =
     { number = 7; name = "com"; icon = "󰺻"; nodes =
       [
         { executable = "/usr/local/google/home/stamer/.go/bin/goto"; arguments =
-          [ "-p"; "2"; "-g"; "mail" ] 
+          [ "-p"; "1"; "-g"; "mail" ] 
         }
       ]
     };
     { number = 8; name = "cal"; icon = "󰃰"; nodes =
       [
         { executable = "/usr/local/google/home/stamer/.go/bin/goto"; arguments =
-          [ "-p"; "2"; "-g"; "calendar" ] 
+          [ "-p"; "1"; "-g"; "calendar" ] 
         }
       ]
     };
     { number = 9; name = "not"; icon = ""; nodes =
       [
         { executable = "/usr/local/google/home/stamer/.go/bin/goto"; arguments =
-          [ "-p"; "2"; "stamer:notes" ] 
+          [ "-p"; "1"; "stamer:notes" ] 
         }
       ]
     };
     { number = 10; name = "gvc"; icon = ""; nodes =
       [
         { executable = "/usr/local/google/home/stamer/.go/bin/goto"; arguments =
-          [ "-p"; "2"; "companion" ] 
+          [ "-p"; "1"; "companion" ] 
         }
       ]
     };
