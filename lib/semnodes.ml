@@ -4,29 +4,22 @@ type node =
     arguments : string list;
   }
 
-let rec arguments_to_string args =
-  match args with
-  | [] -> ""
-  | [arg] -> arg
-  | arg :: args -> arg ^ " " ^ arguments_to_string args
+let arguments_to_string args =
+  String.concat " " args
 
 let node_to_string {executable;arguments} =
   executable ^ " " ^ arguments_to_string arguments
 
-let rec nodes_to_string nodes =
-  match nodes with
-  | [] -> ""
-  | [node] -> (node_to_string node)
-  | node :: nodes -> (node_to_string node) ^ "\n" ^ nodes_to_string nodes
+let nodes_to_string nodes =
+  let render = List.map (node_to_string) nodes in
+  String.concat "\n" render
 
-let node_to_command {executable;arguments} =
-  executable ^ " " ^ arguments_to_string arguments ^ " &"
+let node_to_command node =
+  node_to_string node ^ " &"
 
-let rec nodes_to_command nodes =
-  match nodes with
-  | [] -> ""
-  | [node] -> (node_to_command node)
-  | node :: nodes -> (node_to_command node) ^ "\n" ^ nodes_to_command nodes
+let nodes_to_command nodes =
+  let render = List.map (node_to_command) nodes in
+  String.concat "\n" render
 
 type monitor =
   {
@@ -39,13 +32,12 @@ type monitor =
 let monitor_to_string {number;name;icon;nodes} =
   (Int.to_string number) ^ ": " ^ icon ^ " " ^ name ^ "\n" ^ nodes_to_string nodes
 
-let rec monitors_to_string monitors =
-  match monitors with
-  | [] -> ""
-  | [monitor] -> monitor_to_string monitor
-  | monitor :: monitors -> (monitor_to_string monitor) ^ "\n" ^ monitors_to_string monitors
+let monitors_to_string monitors =
+  let render = List.map (monitor_to_string) monitors in
+  String.concat "\n" render
 
-let find_monitors name monitors = List.filter (fun x -> x.name = name) monitors
+let find_monitors name monitors =
+  List.filter (fun x -> x.name = name) monitors
 
 let switch_to_command monitors name =
   let monitors = find_monitors name monitors in
