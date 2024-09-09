@@ -77,11 +77,15 @@ let monitors =
     }
   ]
 
-let usage = "semnodes [-cl] [monitor-name]"
-let toggle_launch = ref false
-let monitor_name = ref ""
-let set_monitor_name name = monitor_name := name
-let option_list = [("-l", Arg.Set toggle_launch, "Show launch commands for [monitor-name]")]
+
+let configure =
+  let usage = "semnodes [-l] [monitor-name]" in
+  let toggle_launch = ref false in
+  let option_list = [("-l", Arg.Set toggle_launch, "Show launch commands for [monitor-name]")] in
+  let monitor_name = ref "" in
+  let set_monitor_name name = monitor_name := name in
+  let () = Arg.parse option_list set_monitor_name usage in
+  (!monitor_name, !toggle_launch)
 
 let evaluate monitor launch =
   match monitor with
@@ -89,6 +93,6 @@ let evaluate monitor launch =
   | name -> print_endline (evaluate_command monitors name launch)
 
 let () =
-  Arg.parse option_list set_monitor_name usage;
-  evaluate !monitor_name !toggle_launch;
+  let (monitor_name, toggle_launch) = configure in
+  evaluate monitor_name toggle_launch;
 
