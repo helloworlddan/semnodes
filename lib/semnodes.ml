@@ -42,16 +42,16 @@ let find_monitors name monitors =
 let switch_to_command monitors name =
   let monitors = find_monitors name monitors in
   match monitors with
-  | [] -> "echo 'no op' # monitor not found"
+  | [] -> Stdlib.failwith "echo 'no op' # monitor not found"
   | [x] -> "bspc desktop -f '^" ^ Int.to_string x.number ^ "'"
-  | _ -> "echo 'no op' # double config found"
+  | _ -> Stdlib.failwith "echo 'no op' # double config found"
 
 let launch_to_command monitors name =
   let monitors = find_monitors name monitors in
   match monitors with
-  | [] -> "echo 'no op' # monitor not found"
+  | [] -> Stdlib.failwith "echo 'no op' # monitor not found"
   | [x] -> switch_to_command monitors name ^ "\n" ^ nodes_to_command x.nodes
-  | _ -> "echo 'no op' # double config found"
+  | _ -> Stdlib.failwith "echo 'no op' # double config found"
 
 let evaluate_command monitors name launch =
   match launch with
