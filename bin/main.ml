@@ -4,14 +4,12 @@ let monitors =
   [
     { number = 1; name = "bsh"; icon = ""; nodes =
       [
-        { executable = "xterm"; arguments = [] };
-        { executable = "xterm"; arguments = [] };
-        { executable = "xterm"; arguments = [] }
+        { executable = "xterm"; arguments = [ "-e"; "terminal_session"] };
       ]
     };
     { number = 2; name = "vim"; icon = ""; nodes =
       [
-        { executable = "xterm"; arguments = [ "-e"; "nvim" ] }
+        { executable = "xterm"; arguments = [ "-e"; "editor_session"] };
       ]
     };
     { number = 3; name = "doc"; icon = "󱔗"; nodes =
