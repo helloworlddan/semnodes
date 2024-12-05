@@ -4,12 +4,12 @@ let monitors =
   [
     { number = 1; name = "bsh"; icon = ""; nodes =
       [
-        { executable = "xterm"; arguments = [ "-e"; "terminal_session"] };
+        { executable = "xterm"; arguments = [ "-e"; "tmux attach-session -t Terminal || tmux new -s Terminal"] };
       ]
     };
     { number = 2; name = "vim"; icon = ""; nodes =
       [
-        { executable = "xterm"; arguments = [ "-e"; "editor_session"] };
+        { executable = "xterm"; arguments = [ "-e"; "tmux attach-session -t Editor || tmux new -s Editor"] };
       ]
     };
     { number = 3; name = "doc"; icon = "󱔗"; nodes =
