@@ -62,7 +62,7 @@ let monitors =
     { number = 10; name = "gvc"; icon = ""; nodes =
       [
         { executable = "goto"; arguments =
-          [ "-p"; "1"; "companion" ] 
+          [ "-p"; "1"; "meet" ] 
         }
       ]
     };
